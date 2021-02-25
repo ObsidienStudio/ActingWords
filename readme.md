@@ -11,10 +11,10 @@ Non
 ## Utilisation
 
 
-1 - Ouvre index.hta (Windows seulement) ou index.html
-2 -  Clique sur le bouton pour sélectionner le texte qui va s'afficher a la place de celui qui sera écrit
-3 - Commencer a taper sur le clavier
-4 - Profit
+ 1 - Ouvre index.hta (Windows seulement) ou index.html
+ 2 -  Clique sur le bouton pour sélectionner le texte qui va s'afficher a la place de celui qui sera écrit
+ 3 - Commencer a taper sur le clavier
+ 4 - Profit
 
 J'ai mis le fichier "foo" comme fichier de test, vous pouvez le remplir de texte pour tester ce que vous voulez. On peut aussi sélectionner un autre fichier sur l'ordinateur
 
@@ -38,10 +38,10 @@ Nope
 
 ## How to use 
 
-1 - Open index.hta (Windows only) or index.html
-2 - Use the button to select the text that will be displayed instead of your writing
-3 - Start writing
-4 - Profit
+ 1 - Open index.hta (Windows only) or index.html
+ 2 - Use the button to select the text that will be displayed instead of your writing
+ 3 - Start writing
+ 4 - Profit
 
 
 PS : I've made a "foo.txt" file text to test things out, give it a try but you can also use a file on your computer, as long as it's plain text...
