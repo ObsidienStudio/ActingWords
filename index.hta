@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Acting Words</title>
+    <link href="style.css" rel="stylesheet" type="text/css">
+    <HTA:APPLICATION 
+        BORDER="none"
+        SCROLL="no"
+        CAPTION=”no”
+        SYSMENU="no"
+        >
+
+    <meta http-equiv="x-ua-compatible" content="IE=10">
+</head>
+
+<body>
+    <div id="first_page">
+        <div class="row">
+            <textarea id='tbMain' style="display: none;"></textarea>
+        </div>
+        <div class="row">
+            <a id='btnOpen' href='#'>Open</a>
+        </div>
+    </div>
+    <div id="second_page" style="display: none;">
+        <div class="row">
+            <textarea id='tbSec'></textarea>
+        </div>
+        <div class="row"></div>
+    </div>
+</body>
+
+<script>
+
+    var allText = "";
+    var textContainer = document.getElementById('tbMain');
+    var textDisplayer = document.getElementById('tbSec');
+    document.getElementById('btnOpen').addEventListener("click", function (e) {
+        openFile(function (txt) {
+            allText = txt;
+            textDisplayer.value = "";
+            textContainer.value = txt.substr(0, length);
+            document.getElementById("first_page").style.display = "none";
+            document.getElementById("second_page").style.display = "block";
+        });
+    });
+
+    textDisplayer.addEventListener('input', function (e) { //Gère l'écriture du texte
+        var length = e.target.value.length; //Je vérifie la longueur du texte "caché"
+        textDisplayer.value = allText.substr(0, length); //Et j'affiche la partie nécéssaire
+    })
+
+
+    function openFile(callBack) { //Fonction qui gère l'action lors du clique sur le bouton
+        var element = document.createElement('input');
+        element.setAttribute('type', "file");
+        element.setAttribute('id', "btnOpenFile");
+        element.onchange = function () {
+            readText(this, callBack);
+            document.body.removeChild(this);
+        }
+
+        element.style.display = 'none';
+        document.body.appendChild(element);
+
+        element.click();
+    }
+
+    function readText(filePath, callBack) {
+        var reader;
+        if (window.File && window.FileReader && window.FileList && window.Blob) {
+            reader = new FileReader();
+        } else {
+            alert("L'API de lécture de fichier n'est pas disponible sur ce navigateur, veuillez en séléctionner un autre (Firefox, Chromium...). Fallback required.");
+            return false;
+        }
+        var output = ""; //Si on veut placer un texte qui s'affiche en cas d'erreur, on peut le placer ici
+        if (filePath.files && filePath.files[0]) {
+            reader.onload = function (e) {
+                output = e.target.result.replace(/\r/g, "\n");
+                callBack(output);
+            };
+            reader.readAsText(filePath.files[0]);
+        }
+        else {
+            return false;
+        }
+        return true;
+    }
+</script>
+
+</html>

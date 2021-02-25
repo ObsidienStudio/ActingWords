@@ -1,0 +1,7 @@
+Hello World !
+
+Je suis un fichier de test
+
+N'hesitez pas a inserer des passages a effacer, cela rends la saisie plus naturelle...
+
+Ne supporte pas le Markdown ou l'html, que le "plain text"
